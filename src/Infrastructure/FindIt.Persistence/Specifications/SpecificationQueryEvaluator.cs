@@ -8,7 +8,7 @@ namespace FindIt.Persistence.Specifications;
 /// A static class that evaluates specifications against a queryable collection of entities.
 /// </summary>
 /// <typeparam name="T">The type of entities that the specifications apply to. Must be a reference type.</typeparam>
-public static class SpecificationQueryEvaluator<T> where T : Entity
+public static class SpecificationQueryEvaluator<T> where T : BaseEntity
 {
     /// <summary>
     /// Evaluates the given specifications against the input query and returns the resulting IQueryable.
