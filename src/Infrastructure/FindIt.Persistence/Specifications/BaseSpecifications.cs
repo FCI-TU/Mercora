@@ -9,7 +9,7 @@ namespace FindIt.Persistence.Specifications;
 /// </summary>
 /// <typeparam name="T">The type of entities that the specifications apply to. Must be a reference type.</typeparam>
 
-public class BaseSpecifications<T> : ISpecifications<T> where T : Entity
+public class BaseSpecifications<T> : ISpecifications<T> where T : BaseEntity
 {
 
     #region  Properties
