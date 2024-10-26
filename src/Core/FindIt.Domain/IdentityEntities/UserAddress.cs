@@ -1,6 +1,9 @@
 ﻿using FindIt.Domain.Common;
+using FindIt.Domain.IdentityEntities;
 
-namespace FindIt.Domain.IdentityEntities
+
+
+namespace FindIt.Domain
 {
     public class UserAddress : BaseEntity
     {

@@ -20,25 +20,6 @@ namespace FindIt.Persistence.Context.Configurations
                .IsRequired()
                .HasMaxLength(50);
 
-            // Relationships
-            builder.HasMany(u => u.UserAddresses)
-                .WithOne(add=>add.AppUser)
-                .HasForeignKey(add => add.UserId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasMany(u => u.IdentityCodes)
-                   .WithOne(ic => ic.AppUser)
-                   .HasForeignKey(ic => ic.UserId)
-                   .OnDelete(DeleteBehavior.Cascade);
-
-
-            builder.HasMany(u => u.RefreshTokens)
-                   .WithOne(rt => rt.AppUser)
-                   .HasForeignKey(rt => rt.UserId)
-                   .OnDelete(DeleteBehavior.Cascade);
-
-
-
         }
     }
 }
