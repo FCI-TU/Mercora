@@ -12,7 +12,7 @@ namespace FindIt.Application.ServiceExtensions
     public static class ServiceExtensions
     {
         public static IServiceCollection AddAuthenticationService(this IServiceCollection services,
-            IOptions<JwtData> JwtData, IConfiguration configuration)
+            JwtData JwtData, IConfiguration configuration)
         {
 
             services.AddAuthentication(authenticationOptions =>
@@ -26,11 +26,11 @@ namespace FindIt.Application.ServiceExtensions
                 jwtBearerOptions.TokenValidationParameters = new TokenValidationParameters()
                 {
                     ValidateAudience = true,
-                    ValidAudience = JwtData.Value.ValidAudience,
+                    ValidAudience = JwtData.ValidAudience,
                     ValidateIssuer = true,
-                    ValidIssuer = JwtData.Value.ValidIssuer,
+                    ValidIssuer = JwtData.ValidIssuer,
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtData.Value.SecretKey)),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtData.SecretKey)),
                     ValidateLifetime = true,
                     ClockSkew = TimeSpan.Zero,
                 };
