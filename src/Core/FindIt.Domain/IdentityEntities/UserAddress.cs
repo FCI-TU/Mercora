@@ -13,7 +13,7 @@ namespace FindIt.Domain
         public string Country { get; set; } = null!;
         public string Governate { get; set; } = null!;
         public string PostalCode { get; set; } = null!;
-        public int UserId { get; set; }
+        public string UserId { get; set; } = null!;
         public required AppUser AppUser { get; set; }
     }
 }

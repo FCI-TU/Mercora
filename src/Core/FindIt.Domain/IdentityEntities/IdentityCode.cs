@@ -20,7 +20,7 @@ namespace FindIt.Domain.IdentityEntities
 
         public DateTime? ActivationTime { get; set; }
 
-        public int UserId { get; set; }
+        public string UserId { get; set; } = null!;
 
         public virtual AppUser AppUser { get; set; } = null!;
     }
