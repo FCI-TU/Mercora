@@ -7,8 +7,8 @@ namespace FindIt.Domain.IdentityEntities
         public string FirstName { get; set; } = null!;
         public string LastName { get; set; } = null!;
         public virtual ICollection<UserAddress>? UserAddresses { get; set; }
-        //public virtual ICollection<IdentityCode> IdentityCodes { get; set; } = null!;
-        //public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = null!;
+        public virtual ICollection<IdentityCode> IdentityCodes { get; set; } = null!;
+        public virtual ICollection<RefreshToken> RefreshTokens { get; set; } = null!;
 
 
     }
