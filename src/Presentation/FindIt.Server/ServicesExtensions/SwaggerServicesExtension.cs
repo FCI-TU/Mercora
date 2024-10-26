@@ -57,7 +57,7 @@ namespace FindIt.Server.ServicesExtensions
             {
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "FindItV1");
             });
-
+            app.UseWebAssemblyDebugging();
             return app;
         }
     }

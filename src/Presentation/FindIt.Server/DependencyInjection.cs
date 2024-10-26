@@ -19,7 +19,8 @@ namespace FindIt.Server
 
             var jwtData = servicesProvider.GetRequiredService<IOptions<JwtData>>().Value;
 
-            services.AddControllers();
+            services.AddControllersWithViews();
+            services.AddRazorPages();
 
             services.AddSwaggerServices();
 

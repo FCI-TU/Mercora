@@ -7,8 +7,8 @@ namespace FindIt.Domain
 {
     public class UserAddress : BaseEntity
     {
-        public string AdressName { get; set; } = null!;
-        public string AdressLine { get; set; } = null!;
+        public string AddressName { get; set; } = null!;
+        public string AddressLine { get; set; } = null!;
         public string City { get; set; } = null!;
         public string Country { get; set; } = null!;
         public string Governate { get; set; } = null!;
