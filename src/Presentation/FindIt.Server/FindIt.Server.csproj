@@ -14,13 +14,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\FindIt.Infrastructure\FindIt.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\FindIt.Persistence\FindIt.Persistence.csproj" />
     <ProjectReference Include="..\FindIt.Client\FindIt.Client.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
