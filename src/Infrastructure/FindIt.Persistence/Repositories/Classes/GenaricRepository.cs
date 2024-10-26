@@ -2,20 +2,13 @@
 using FindIt.Persistence.Interfaces;
 using FindIt.Persistence.Specifications;
 using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace FindIt.Persistence.Repositories
+namespace FindIt.Persistence.Repositories.Classes
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public class GenericRepository<T>(StoreDbContext dbContext) : IGenericRepository<T>
+        where T : BaseEntity
     {
-        private readonly StoreDbContext _dbContext;
-
-        public GenericRepository(StoreDbContext dbContext)
-        {
-            _dbContext = dbContext;
-        }
+        private readonly StoreDbContext _dbContext = dbContext;
 
         public async Task<IReadOnlyList<T>> GetAllAsync(bool withNoTracking = true)
         {

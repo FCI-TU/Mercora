@@ -3,7 +3,7 @@ using FindIt.Domain.IdentityEntities;
 
 
 
-namespace FindIt.Domain
+namespace FindIt.Domain.IdentityEntities
 {
     public class UserAddress : BaseEntity
     {
