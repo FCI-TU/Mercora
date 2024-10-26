@@ -1,4 +1,5 @@
-﻿using FindIt.Shared;
+﻿using FindIt.Domain.Common;
+using FindIt.Shared;
 namespace FindIt.Persistence.Interfaces
 {
     public interface IGenericRepository<T> where T : BaseEntity

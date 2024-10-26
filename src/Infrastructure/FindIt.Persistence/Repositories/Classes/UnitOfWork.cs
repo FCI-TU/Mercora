@@ -1,5 +1,5 @@
-﻿using FindIt.Persistence.Interfaces;
-using FindIt.Shared;
+﻿using FindIt.Domain.Common;
+using FindIt.Persistence.Interfaces;
 
 namespace FindIt.Persistence.Repositories.Classes
 {

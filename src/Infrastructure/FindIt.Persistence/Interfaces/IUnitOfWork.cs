@@ -1,4 +1,4 @@
-﻿using FindIt.Shared;
+﻿using FindIt.Domain.Common;
 
 namespace FindIt.Persistence.Interfaces
 {
