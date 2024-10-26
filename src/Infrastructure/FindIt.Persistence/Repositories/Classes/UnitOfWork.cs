@@ -12,15 +12,7 @@ namespace FindIt.Persistence.Repositories.Classes
         public IGenericRepository<T> Repository<T>() where T : BaseEntity
         {
             var type = typeof(T).Name;
-            if (!_repositories.ContainsKey(type))
-            {
-
-                var repositoryInstance = new GenericRepository<T>(_dbContext);
-                _repositories[type] = repositoryInstance;
-            }
-
-           
-            return (IGenericRepository<T>)_repositories[type];
+            return (IGenericRepository<T>)_repositories.GetOrAdd(type, _ => new GenericRepository<T>(_dbContext));
         }
 
         public async Task<int> CompleteAsync()=> await _dbContext.SaveChangesAsync();
