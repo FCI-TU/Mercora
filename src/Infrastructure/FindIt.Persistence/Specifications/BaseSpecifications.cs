@@ -1,6 +1,7 @@
 ﻿using FindIt.Persistence.Interfaces;
 using System.Linq.Expressions;
-using FindIt.Domain.Common;
+using FindIt.Shared;
+using Microsoft.EntityFrameworkCore;
 
 namespace FindIt.Persistence.Specifications;
 
@@ -13,7 +14,7 @@ public class BaseSpecifications<T> : ISpecifications<T> where T : BaseEntity
 {
 
     #region  Properties
-
+    
     // Gets the criteria for filtering entities
     public Expression<Func<T, bool>>? WhereCriteria { get; private set; }
 
