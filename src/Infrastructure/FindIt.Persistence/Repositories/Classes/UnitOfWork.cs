@@ -3,6 +3,7 @@ using FindIt.Persistence.Interfaces;
 using System;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
+using FindIt.Persistence.Context;
 
 namespace FindIt.Persistence.Repositories.Classes
 {
