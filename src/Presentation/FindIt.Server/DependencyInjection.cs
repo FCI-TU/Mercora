@@ -1,5 +1,7 @@
 ﻿using FindIt.Application.ServiceExtensions;
 using FindIt.Application.Settings;
+using FindIt.Persistence.ServiceExtensions;
+using FindIt.Persistence.Settings;
 using FindIt.Server.ServicesExtensions;
 using Microsoft.Extensions.Options;
 
@@ -18,13 +20,19 @@ namespace FindIt.Server
             var servicesProvider = services.BuildServiceProvider();
 
             var jwtData = servicesProvider.GetRequiredService<IOptions<JwtData>>().Value;
+            var databaseConnections = servicesProvider.GetRequiredService<IOptions<DatabaseConnections>>().Value;
 
             services.AddControllersWithViews();
             services.AddRazorPages();
 
             services.AddSwaggerServices();
 
-            services.AddAuthenticationService(jwtData, configuration);
+            services.AddStoreContext(databaseConnections.FindItDb);
+
+
+            services.AddIdentityConfigurations();
+
+            services.AddAuthenticationService(jwtData);
 
 
             return builder;
