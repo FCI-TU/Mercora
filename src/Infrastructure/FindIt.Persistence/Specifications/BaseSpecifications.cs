@@ -1,8 +1,6 @@
-﻿using FindIt.Persistence.Interfaces;
+﻿using FindIt.Domain.Common;
+using FindIt.Persistence.Interfaces;
 using System.Linq.Expressions;
-using FindIt.Domain.Common;
-using FindIt.Shared;
-using Microsoft.EntityFrameworkCore;
 
 namespace FindIt.Persistence.Specifications;
 

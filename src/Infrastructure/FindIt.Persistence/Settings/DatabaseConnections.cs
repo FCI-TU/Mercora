@@ -1,9 +1,6 @@
-﻿
-namespace FindIt.Persistence.Settings
+﻿namespace FindIt.Persistence.Settings;
+public class DatabaseConnections
 {
-    public class DatabaseConnections
-    {
-        public string FindItDb {get; set; } = null!;
+    public string FindItDb {get; set; } = null!;
 
-    }
 }

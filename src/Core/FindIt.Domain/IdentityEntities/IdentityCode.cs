@@ -1,29 +1,19 @@
-﻿
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using FindIt.Domain.Common;
+﻿using FindIt.Domain.Common;
 
-namespace FindIt.Domain.IdentityEntities
+namespace FindIt.Domain.IdentityEntities;
+public class IdentityCode : BaseEntity
 {
-    public class IdentityCode : BaseEntity
-    {
+    public string Code { get; set; } = null!;
 
+    public bool IsActive { get; set; }
 
+    public bool ForRegistrationConfirmation { get; set; }
 
-        public string Code { get; set; } = null!;
+    public DateTime CreationTime { get; set; }
 
-        public bool IsActive { get; set; }
+    public DateTime? ActivationTime { get; set; }
 
-        public bool ForRegistrationConfirmation { get; set; }
+    public string UserId { get; set; } = null!;
 
-        public DateTime CreationTime { get; set; }
-
-        public DateTime? ActivationTime { get; set; }
-
-        public string UserId { get; set; } = null!;
-
-        public virtual AppUser AppUser { get; set; } = null!;
-    }
+    public virtual AppUser AppUser { get; set; } = null!;
 }
-
-

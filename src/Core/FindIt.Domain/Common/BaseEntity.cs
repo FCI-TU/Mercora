@@ -1,9 +1,5 @@
-﻿
-
-namespace FindIt.Domain.Common
+﻿namespace FindIt.Domain.Common;
+public class BaseEntity
 {
-    public class BaseEntity
-    {
-        public int Id { get; set; }
-    }
+    public int Id { get; set; }
 }

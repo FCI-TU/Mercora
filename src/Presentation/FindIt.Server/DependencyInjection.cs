@@ -1,10 +1,8 @@
 ﻿using FindIt.Application.ServiceExtensions;
 using FindIt.Application.Settings;
-using FindIt.Persistence.Context;
 using FindIt.Persistence.ServiceExtensions;
 using FindIt.Persistence.Settings;
 using FindIt.Server.ServicesExtensions;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace FindIt.Server

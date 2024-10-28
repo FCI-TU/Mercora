@@ -1,10 +1,8 @@
 ﻿using FindIt.Domain.Common;
 
-namespace FindIt.Persistence.Interfaces
+namespace FindIt.Persistence.Interfaces;
+public interface IUnitOfWork : IDisposable, IAsyncDisposable
 {
-    public interface IUnitOfWork : IDisposable, IAsyncDisposable
-    {
-        IGenericRepository<T> Repository<T>() where T : BaseEntity;
-        Task<int> CompleteAsync();
-    }
+    IGenericRepository<T> Repository<T>() where T : BaseEntity;
+    Task<int> CompleteAsync();
 }
