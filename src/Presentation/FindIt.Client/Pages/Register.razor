@@ -1,0 +1,91 @@
+﻿@page "/register"
+@using System.ComponentModel.DataAnnotations
+@using BlazorBootstrap;
+
+<div class="register-container">
+    <div class="background-overlay"></div>
+
+    <div class="main-container">
+        <div class="register-card">
+            <img src="/images/register_card.png" alt="Store Image" class="store-image" />
+        </div>
+
+        <div class="register-form">
+            <div class="form-header">
+                <h2>Create <br /> <span>new account.</span></h2>
+            </div>
+
+            <div class="form-group name-group">
+                <div class="input-wrapper">
+                    <input placeholder="First name" @bind="FirstName" />
+                    <Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PersonFill" />
+                </div>
+                <div class="input-wrapper">
+                    <input placeholder="Last name" @bind="LastName" />
+                    <Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PersonFill" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <input placeholder="Email" @bind="Email" type="email" />
+                    <Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.EnvelopeFill" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <input placeholder="Phone Number" @bind="PhoneNumber" type="tel" />
+                    <Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PhoneFill" />
+                    
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <input placeholder="Password" @bind="Password" type="password" />
+                    <Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PassFill" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="input-wrapper">
+                    <input placeholder="Re-enter password" @bind="ReEnterPassword" type="password" />
+                    <Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PassFill" />
+                </div>
+            </div>
+
+            <button class="submit-button" @onclick="RegisterUser">Create Account</button>
+        </div>
+    </div>
+
+    <div class="logo">
+        <img src="/images/green_logo.png" alt="FindIt Logo" />
+    </div>
+</div>
+
+
+@code {
+    [Required]
+    public string FirstName { get; set; }
+
+    [Required]
+    public string LastName { get; set; }
+
+    [Required, EmailAddress]
+    public string Email { get; set; }
+
+    [Required]
+    public string PhoneNumber { get; set; }
+
+    [Required]
+    public string Password { get; set; }
+
+    [Required]
+    public string ReEnterPassword { get; set; }
+
+    private void RegisterUser()
+    {
+        Console.WriteLine("Registered!");
+    }
+}
