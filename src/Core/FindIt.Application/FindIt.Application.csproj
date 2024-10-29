@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\FindIt.Domain\FindIt.Domain.csproj" />
+    <ProjectReference Include="..\..\Presentation\FindIt.Shared\FindIt.Shared.csproj" />
   </ItemGroup>
 
 </Project>
