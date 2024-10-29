@@ -1,88 +1,83 @@
 ﻿@page "/register"
-@using System.ComponentModel.DataAnnotations
-@using BlazorBootstrap;
 
 <div class="register-container">
-    <div class="background-overlay"></div>
+	<EditForm Model="@UserData" OnValidSubmit="@RegisterUser" class="w-75 mx-auto">
+		<DataAnnotationsValidator />
 
-    <div class="main-container">
-        <div class="register-card">
-            <img src="/images/register_card.png" alt="Store Image" class="store-image" />
-        </div>
+		<div class="background-overlay"></div>
 
-        <div class="register-form">
-            <div class="form-header">
-                <h2>Create <br /> <span>new account.</span></h2>
-            </div>
+		<div class="main-container">
+			<div class="register-card">
+				<img src="/images/register_card.png" alt="Store Image" class="store-image" />
+			</div>
 
-            <div class="form-group name-group">
-                <div class="input-wrapper">
-                    <input placeholder="First name" @bind="FirstName" />
-                    <Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PersonFill" />
-                </div>
-                <div class="input-wrapper">
-                    <input placeholder="Last name" @bind="LastName" />
-                    <Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PersonFill" />
-                </div>
-            </div>
+			<div class="register-form">
+				<div class="form-header">
+					<h2 class="fw-bold text-white">Join Us Today!</h2>
+				</div>
 
-            <div class="form-group">
-                <div class="input-wrapper">
-                    <input placeholder="Email" @bind="Email" type="email" />
-                    <Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.EnvelopeFill" />
-                </div>
-            </div>
+				<div class="form-group name-group">
+					<div>
+						<div class="input-wrapper">
+							<input placeholder="First name" @bind="@UserData.FirstName" />
+							<Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PersonFill" />
+						</div>
+						<ValidationMessage For="@(() => UserData.FirstName)" class="fw-bold text-danger" style="font-size: 0.9rem" />
+					</div>
+					<div>
+						<div class="input-wrapper">
+							<input placeholder="Last name" @bind="@UserData.LastName" />
+							<Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PersonFill" />
+						</div>
+						<ValidationMessage For="@(() => UserData.LastName)" class="fw-bold text-danger" style="font-size: 0.9rem" />
+					</div>
+				</div>
 
-            <div class="form-group">
-                <div class="input-wrapper">
-                    <input placeholder="Phone Number" @bind="PhoneNumber" type="tel" />
-                    <Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PhoneFill" />
-                    
-                </div>
-            </div>
+				<div class="form-group">
+					<div class="input-wrapper">
+						<input placeholder="Email" @bind="@UserData.Email" type="email" />
+						<Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.EnvelopeFill" />
+					</div>
+					<ValidationMessage For="@(() => UserData.Email)" class="fw-bold text-danger" style="font-size: 0.9rem" />
+				</div>
 
-            <div class="form-group">
-                <div class="input-wrapper">
-                    <input placeholder="Password" @bind="Password" type="password" />
-                    <Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PassFill" />
-                </div>
-            </div>
+				<div class="form-group">
+					<div class="input-wrapper">
+						<input placeholder="Phone Number" @bind="@UserData.PhoneNumber" type="tel" />
+						<Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PhoneFill" />
+					</div>
+					<ValidationMessage For="@(() => UserData.PhoneNumber)" class="fw-bold text-danger" style="font-size: 0.9rem" />
+				</div>
 
-            <div class="form-group">
-                <div class="input-wrapper">
-                    <input placeholder="Re-enter password" @bind="ReEnterPassword" type="password" />
-                    <Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PassFill" />
-                </div>
-            </div>
+				<div class="form-group">
+					<div class="input-wrapper">
+						<input placeholder="Password" @bind="@UserData.Password" type="password" />
+						<Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PassFill" />
+					</div>
+					<ValidationMessage For="@(() => UserData.Password)" class="fw-bold text-danger" style="font-size: 0.9rem" />
+				</div>
 
-            <button class="submit-button" @onclick="RegisterUser">Create Account</button>
-        </div>
-    </div>
+				<div class="form-group">
+					<div class="input-wrapper">
+						<input placeholder="Re-enter password" @bind="@UserData.RePassword" type="password" />
+						<Icon Color="IconColor.Secondary" Size="IconSize.x3" Name="IconName.PassFill" />
+					</div>
+					<ValidationMessage For="@(() => UserData.RePassword)" class="fw-bold text-danger" style="font-size: 0.9rem" />
+				</div>
 
-    <div class="logo">
-        <img src="/images/green_logo.png" alt="FindIt Logo" />
-    </div>
+				<button class="submit-button btn btn-danger py-2 rounded-5">Create Account</button>
+			</div>
+		</div>
+
+		<div class="logo">
+			<img src="/images/green_logo.png" alt="FindIt Logo" />
+		</div>
+	</EditForm>
 </div>
 
 
 @code {
-    [Required]
-    public string FirstName { get; set; }
-
-    [Required]
-    public string LastName { get; set; }
-
-    [Required, EmailAddress]
-    public string Email { get; set; }
-
-    [Required]
-    public string PhoneNumber { get; set; }
-
-    [Required]
-    public string Password { get; set; }
-
-    [Required]
-    public string ReEnterPassword { get; set; }
+    private readonly RegisterRequest UserData = new();
 
     private void RegisterUser()
     {
