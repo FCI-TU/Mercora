@@ -1,14 +1,14 @@
 ﻿@page "/register"
 
-<div class="register-container d-flex flex-column align-items-center text-light p-2 align-self-center">
+<div class="register-container d-flex flex-lg-column align-items-center text-light p-2 align-self-center">
 	<EditForm Model="@UserData" OnValidSubmit="@RegisterUser" class="w-75 mx-auto">
 		<DataAnnotationsValidator />
 
 		<div class="background-overlay position-absolute top-0 start-0 w-100 h-100 bg-light bg-opacity-25 z-1"></div>
 
-		<div class="main-container d-flex p-4 justify-content-evenly align-items-center position-relative z-2 rounded-5">
-			<div class="register-card d-flex">
-				<img src="/images/register_card.png" alt="Store Image" class="store-image" />
+		<div class="main-container flex-column flex-lg-row d-flex p-4 justify-content-evenly align-items-center position-relative z-2 rounded-5">
+			<div class="register-card d-flex justify-content-center">
+				<img src="/images/register_card.png" alt="Store Image" class="store-image w-50" />
 			</div>
 
 			<div class="register-form d-flex flex-column gap-3 text-center">
