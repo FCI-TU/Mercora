@@ -147,21 +147,21 @@ namespace FindIt.Application.ErrorHandling
 			{ 510, "Not Extended"},
 			{ 511, "Network Authentication Required"},
 		};
-		public int _statusCode { get; set; }
-		public string _message { get; set; }
+		public int StatusCode { get; set; }
+		public string Message { get; set; }
 		public Status(int statusCode, string? message = null)
 		{
-			_statusCode = statusCode;
-			_message = message ?? GetHttpMessage(statusCode);
+			StatusCode = statusCode;
+			Message = message ?? GetHttpMessage(statusCode);
 		}
 		public Status(StatusCode statusCode, string? message = null)
 		{
-			_statusCode = ((int)statusCode);
-			_message = message ?? GetHttpMessage(((int)statusCode));
+			StatusCode = ((int)statusCode);
+			Message = message ?? GetHttpMessage(((int)statusCode));
 		}
 		public bool isSuccess()
 		{
-			return 200 <= _statusCode && _statusCode < 300;
+			return 200 <= StatusCode && StatusCode < 300;
 		}
 		public bool isError()
 		{
