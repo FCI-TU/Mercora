@@ -6,9 +6,9 @@ namespace FindIt.Application.Interfaces.Services;
 
 public interface IAuthenticationService
 {
-	Task<AppUserResponse> GetUserAsync(string userId);
 	Task<Result<AppUserResponse>> RegisterUserAsync(RegisterRequest register);
 	Task<Result<AppUserResponse>> LoginUserAsync(LoginRequest register);
-	Task<Result<AppUserResponse>> UpdateUserAsync(AppUser updatedUser);
-	Task<Result> DeleteUserAsync(string userId);
+	void LogoutUserAsync();
+	Task<AppUserResponse> GetUserAsync();
+	Task<Result> DeleteUserAsync();
 }

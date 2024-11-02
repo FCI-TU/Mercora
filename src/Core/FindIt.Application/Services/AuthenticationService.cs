@@ -52,10 +52,15 @@ public class AuthenticationService(UserManager<AppUser> _userManager, SignInMana
 
 		var userResponse = new AppUserResponse
 		{
+			FirstName = user.FirstName,
+			LastName = user.LastName,
 			Email = user.Email!,
+			PhoneNumber = user.PhoneNumber!,
 			Token = token,
-			Roles = userRoles
+			IsVerified = user.EmailConfirmed,
+			Roles = userRoles,
 		};
+
 		return new Result<AppUserResponse>(userResponse);
 	}
 
@@ -78,25 +83,35 @@ public class AuthenticationService(UserManager<AppUser> _userManager, SignInMana
 	}
 	public async Task<Result<AppUserResponse>> RegisterUserAsync(RegisterRequest register)
 	{
+
+		
 		if (_userManager.FindByEmailAsync(register.Email).Result != null)
 		{
 			return new Result<AppUserResponse>(new Status(409, "A user with this email already exists!"));
 		}
-		var user = new AppUser { Email = register.Email, UserName = register.Email, FirstName = register.FirstName, LastName = register.LastName };
+		var user = new AppUser { Email = register.Email, UserName = register.Email.Split('@')[0], FirstName = register.FirstName, LastName = register.LastName };
 		var result = await _userManager.CreateAsync(user, register.Password);
-		var userResponse = new AppUserResponse { Token = await GenerateAccessTokenAsync(user), Email = register.Email, Roles = await _userManager.GetRolesAsync(user) };
+		var userResponse = new AppUserResponse {
+			FirstName = user.FirstName,
+			LastName = user.LastName,
+			Email = user.Email,
+			PhoneNumber = user.PhoneNumber!,
+			Token = await GenerateAccessTokenAsync(user),
+			IsVerified = user.EmailConfirmed,
+			Roles = await _userManager.GetRolesAsync(user)
+		};
 
 		return result.Succeeded ? new Result<AppUserResponse>(userResponse) : new Result<AppUserResponse>(new Status(400));
 	}
-	public async Task<Result> DeleteUserAsync(string userId)
+	public async void LogoutUserAsync()
+	{
+		await _signInManager.SignOutAsync();
+	}
+	public async Task<Result> DeleteUserAsync()
 	{
 		throw new NotImplementedException();
 	}
-	public async Task<AppUserResponse> GetUserAsync(string userId)
-	{
-		throw new NotImplementedException();
-	}
-	public async Task<Result<AppUserResponse>> UpdateUserAsync(AppUser updatedUser)
+	public async Task<AppUserResponse> GetUserAsync()
 	{
 		throw new NotImplementedException();
 	}
