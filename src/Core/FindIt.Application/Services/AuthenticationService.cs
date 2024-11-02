@@ -70,13 +70,13 @@ public class AuthenticationService(UserManager<AppUser> _userManager, SignInMana
 
 		if (user is null || login.Password is null)
 		{
-			return new Result<AppUserResponse>(new Status(404, "No user registered with this email!"));
+			return new Result<AppUserResponse>(new Status(StatusCode.NotFound, "No user registered with this email!"));
 		}
 		var result = await _signInManager.CheckPasswordSignInAsync(user!, login.Password, false);
 		
 		if (!result.Succeeded)
 		{
-			return new Result<AppUserResponse>(new Status(401, "Incorrect email or password!"));
+			return new Result<AppUserResponse>(new Status(StatusCode.Unauthorized, "Incorrect email or password!"));
 		}
 
 		return await CreateUserResponse(user);
@@ -87,7 +87,7 @@ public class AuthenticationService(UserManager<AppUser> _userManager, SignInMana
 		
 		if (_userManager.FindByEmailAsync(register.Email).Result != null)
 		{
-			return new Result<AppUserResponse>(new Status(409, "A user with this email already exists!"));
+			return new Result<AppUserResponse>(new Status(StatusCode.Conflict, "A user with this email already exists!"));
 		}
 		var user = new AppUser { Email = register.Email, UserName = register.Email.Split('@')[0], FirstName = register.FirstName, LastName = register.LastName };
 		var result = await _userManager.CreateAsync(user, register.Password);
@@ -101,7 +101,7 @@ public class AuthenticationService(UserManager<AppUser> _userManager, SignInMana
 			Roles = await _userManager.GetRolesAsync(user)
 		};
 
-		return result.Succeeded ? new Result<AppUserResponse>(userResponse) : new Result<AppUserResponse>(new Status(400));
+		return result.Succeeded ? new Result<AppUserResponse>(userResponse) : new Result<AppUserResponse>(new Status(StatusCode.BadRequest));
 	}
 	public async void LogoutUserAsync()
 	{
