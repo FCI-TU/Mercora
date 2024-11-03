@@ -1,15 +1,14 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using FindIt.Application.ErrorHandling;
+﻿using FindIt.Application.ErrorHandling;
 using FindIt.Application.Interfaces;
 using FindIt.Application.Settings;
 using FindIt.Domain.IdentityEntities;
 using FindIt.Shared.Authentications;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace FindIt.Application.Services;
 

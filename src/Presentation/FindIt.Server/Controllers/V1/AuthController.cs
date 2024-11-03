@@ -17,7 +17,7 @@ namespace FindIt.Server.Controllers.V1
         {
             var result = await authService.RegisterUserAsync(model);
 
-            return result.IsSuccess ? result.ToSuccess(result.Value) : result.ToProblem();
+            return result.IsSuccess ? Ok(result.Value) : result.ToProblem();
 
         }
 

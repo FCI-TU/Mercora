@@ -1,38 +1,36 @@
 ﻿using FindIt.Shared.Authentications;
-using Microsoft.AspNetCore.Components;
 using System.Net.Http.Json;
 
 namespace FindIt.Client.Services.Authentication;
-public class AuthenticationService(HttpClient http, NavigationManager navigationManager) : IAuthenticationService
+public class AuthenticationService(HttpClient http) : IAuthenticationService
 {
 	public async Task<AppUserResponse?> RegisterAsync(RegisterRequest registerRequest)
 	{
-		var response = await http.PostAsJsonAsync("api/auth/register", registerRequest);
+        try
+        {
+            var response = await http.PostAsJsonAsync("api/v1/auth/register", registerRequest);
 
-		if (!response.IsSuccessStatusCode)
-		{
-			// TODO: Implement api error handling
-		}
+            if (response.IsSuccessStatusCode)
+                return await response.Content.ReadFromJsonAsync<AppUserResponse>();
 
-		var userResponse = await response.Content.ReadFromJsonAsync<AppUserResponse>();
-		return userResponse;
-	}
+            return null;
+        }
+        catch (Exception)
+        {
+            return null;
+        }
+    }
 
 	public async Task<AppUserResponse?> LoginAsync(LoginRequest loginRequest)
 	{
 		try
 		{
-			var response = await http.PostAsJsonAsync("api/auth/login", loginRequest);
+			var response = await http.PostAsJsonAsync("api/v1/auth/login", loginRequest);
 
 			if (response.IsSuccessStatusCode)
-			{
-				var userResponse = await response.Content.ReadFromJsonAsync<AppUserResponse>();
-				return userResponse;
-			}
-			else
-			{
-				return null;
-			}
+                return await response.Content.ReadFromJsonAsync<AppUserResponse>();
+				
+            return null;
 		}
 		catch (Exception)
 		{
