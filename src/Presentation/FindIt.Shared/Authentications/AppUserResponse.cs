@@ -6,6 +6,6 @@ public class AppUserResponse
     public string Email { get; set; } = string.Empty;
     public string PhoneNumber { get; set; } = string.Empty;
     public string Token { get; set; } = string.Empty;
-    public string? Role { get; set; }
+    public required IList<string> Roles { get; set; }
     public bool IsVerified { get; set; }
 }

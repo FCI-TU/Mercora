@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace FindIt.Application.ServiceExtensions;
+namespace FindIt.Application;
 public static class ServiceExtensions
 {
     public static IServiceCollection AddAuthenticationService(this IServiceCollection services, JwtData jwtData)
