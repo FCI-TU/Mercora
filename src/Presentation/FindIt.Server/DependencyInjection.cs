@@ -1,6 +1,6 @@
-﻿using FindIt.Application.ServiceExtensions;
+﻿using FindIt.Application;
 using FindIt.Application.Settings;
-using FindIt.Persistence.ServiceExtensions;
+using FindIt.Persistence;
 using FindIt.Persistence.Settings;
 using FindIt.Server.ServicesExtensions;
 using Microsoft.Extensions.Options;
@@ -27,6 +27,8 @@ namespace FindIt.Server
 
             services.AddSwaggerServices();
 
+            services.AddApiVersioningConfigurations();
+
             services.AddStoreContext(databaseConnections.FindItDb);
 
 
@@ -34,6 +36,7 @@ namespace FindIt.Server
 
             services.AddAuthenticationService(jwtData);
 
+            services.AddApplicationServices();
 
             return builder;
         }
