@@ -1,0 +1,39 @@
+﻿.login-container {
+    background-image: url('/images/login_background.png');
+    background-size: cover;
+}
+
+.main-container {
+    background-color: #5ab4a8;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media(min-width: 768px) {
+    .store-image {
+        width: 100%;
+    }
+}
+
+.input-wrapper {
+    background-color: #CECECE;
+}
+
+input {
+    background-color: #CECECE;
+    color: white;
+    border: none;
+    width: 100%;
+    outline: none;
+}
+
+    input::placeholder {
+        color: white;
+    }
+
+.submit-button {
+    background-color: rgb(78 195 175 / 100%);
+}
+
+    .submit-button:hover {
+        background-color: rgb(78 195 175 / 50%);
+    }
