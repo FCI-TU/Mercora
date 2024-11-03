@@ -1,5 +1,10 @@
 ﻿@page "/register"
 
+@inject IAuthenticationService AuthenticationService
+@inject NavigationManager NavigationManager
+@inject IToastService ToastService
+@inject ILocalStorageService LocalStorage
+
 <div class="register-container d-flex flex-lg-column align-items-center text-light p-2 align-self-center">
 	<EditForm Model="@UserData" OnValidSubmit="@RegisterUser" class="w-75 mx-auto">
 		<DataAnnotationsValidator />
@@ -77,10 +82,23 @@
 
 
 @code {
-    private readonly RegisterRequest UserData = new();
+	private readonly RegisterRequest UserData = new();
 
-    private void RegisterUser()
-    {
-        Console.WriteLine("Registered!");
+	async Task RegisterUser()
+	{
+		var user = await AuthenticationService.RegisterAsync(UserData);
+
+		if (user != null)
+		{
+			await LocalStorage.SetItemAsync("AuthenticationToken", user.Token);
+
+			NavigationManager.NavigateTo("/");
+
+			ToastService.ShowSuccess("Account created successfully!");
+		}
+		else
+		{
+			ToastService.ShowError("Failed to create account!");
+		}
     }
 }
