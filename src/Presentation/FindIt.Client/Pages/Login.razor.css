@@ -1,10 +1,19 @@
 ﻿.login-container {
-    background-image: url('/images/login_background.png');
+    background-image: url('/images/signincontainer_background.jpg');
     background-size: cover;
+    height: 100vh;
+}
+
+.login-card {
+    justify-content: space-between;
+    gap: 9rem;
+    background-image: url('/images/signin_background.png');
+    background-size: cover;
+
 }
 
 .main-container {
-    background-color: #5ab4a8;
+    background-color: #ffffffc8;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -14,26 +23,34 @@
     }
 }
 
+.login-h {
+    color: #018c5b !important;
+}
+
 .input-wrapper {
-    background-color: #CECECE;
+    background-color: #f1f1f1;
+}
+
+p {
+    margin: 0;
 }
 
 input {
-    background-color: #CECECE;
-    color: white;
+    background-color: #f1f1f1;
+    color: #969696;
     border: none;
     width: 100%;
     outline: none;
 }
 
     input::placeholder {
-        color: white;
+        color: #969696;
     }
 
 .submit-button {
-    background-color: rgb(78 195 175 / 100%);
+    background-color: rgb(78 195 175 / 90%);
 }
 
     .submit-button:hover {
-        background-color: rgb(78 195 175 / 50%);
+        background-color: rgb(78 195 175 / 100%);
     }
