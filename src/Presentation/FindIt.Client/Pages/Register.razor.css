@@ -1,6 +1,7 @@
 ﻿.register-container {
     background-image: url('/images/register_background.png');
     background-size: cover;
+    height: 100vh;
 }
 
 .main-container {
