@@ -5,7 +5,7 @@
 @inject IToastService ToastService
 @inject ILocalStorageService LocalStorage
 
-<div class="register-container d-flex flex-lg-column align-items-center text-light p-2 align-self-center justify-content-center">
+<div class="register-container d-flex flex-lg-column align-items-center text-light align-self-center justify-content-center">
 	<EditForm Model="@UserData" OnValidSubmit="@RegisterUser" class="w-75 mx-auto">
 		<DataAnnotationsValidator />
 
