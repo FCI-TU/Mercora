@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FindIt.Persistence.Context.Configurations
 {
-    internal class CategoryConfigurations : IEntityTypeConfiguration<Category>
+    public class CategoryConfigurations : IEntityTypeConfiguration<Category>
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
