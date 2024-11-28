@@ -1,4 +1,5 @@
-﻿using FindIt.Domain.IdentityEntities;
+﻿using FindIt.Domain;
+using FindIt.Domain.IdentityEntities;
 using FindIt.Persistence.Context.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,10 @@ public class StoreDbContext(DbContextOptions<StoreDbContext> options) : Identity
     public DbSet<IdentityCode> IdentityCodes { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     public DbSet<UserAddress> UserAddresses { get; set; }
+
     public DbSet<Size> Sizes { get; set; }
     public DbSet<ProductSize> ProductSizes { get; set; }
+
+    public DbSet<Category> Categories { get; set; }
+
 }
