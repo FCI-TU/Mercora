@@ -1,6 +1,6 @@
 ﻿@using Blazored.Toast
 @using Blazored.Toast.Configuration
-@using FindIt.Client.Shared.Home
+
 @inherits LayoutComponentBase
 
 <BlazoredToasts Position="ToastPosition.BottomRight" Timeout="4" IconType="IconType.FontAwesome" SuccessClass="success-toast-override"
@@ -11,9 +11,9 @@
 		<div class="bg-primary">
 			<MercoraNavMenu/>
 		</div>
-		<article class="content px-4">
+		<div>
 			@Body
-		</article>
+		</div>
 	</main>
 </div>
 

@@ -1,6 +1,9 @@
 ﻿@page "/login"
 
+@inject IToastService ToastService
+@inject ILocalStorageService LocalStorage
 @inject NavigationManager NavigationManager
+@inject IAuthenticationService AuthenticationService
 
 <div class="login-container d-flex flex-lg-column align-items-center text-light align-self-center justify-content-center">
 	<EditForm Model="@UserData" OnValidSubmit="@loginUser" class="w-75 mx-auto">
@@ -13,9 +16,9 @@
 					<img src="/images/green_logo.png" alt="Logo" class="store-image w-75" />
 					<p class="fw-bold text-uppercase fs-1 text-center">Welcome Back!</p>
 				</div>
-				<div class="d-flex flex-column gap-2 align-items-center">
+				<div class="d-flex flex-column gap-2 mb-3 align-items-center">
 					<p>Don't have an account?</p>
-					<button class="submit-button py-2 rounded-5 p-3 fs-5 text-light border-0 w-50">SIGN UP</button>
+					<a href="/register" class="btn submit-button py-2 rounded-5 p-3 fs-5 text-light border-0 w-50">SIGN UP</a>
 				</div>
 			</div>
 
@@ -23,8 +26,9 @@
 				<div class="form-header align-self-center">
 					<h2 class="fw-bold text-white login-h">Login to FindIt!</h2>
 
-					<button data-mdb-button-init data-mdb-ripple-init class="btn btn-block btn-primary bg-white rounded-pill text-black border-0 fw-bold bg-opacity-75 d-flex flex-row align-items-center gap-3"
-							style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 2.5rem;">
+					<button data-mdb-button-init data-mdb-ripple-init 
+					        class="btn btn-block btn-primary bg-white rounded-pill text-black border-0 fw-bold bg-opacity-75 d-flex flex-row align-items-center gap-3 shadow"
+					        style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: 2.5rem;">
 						<Icon Color="IconColor.Secondary" Size="IconSize.x4" Name="IconName.Google" />
 						<p>Sign in with Google</p>
 					</button>
@@ -57,25 +61,23 @@
 
 
 @code {
-	private readonly RegisterRequest UserData = new();
+	private readonly LoginRequest UserData = new();
 
 	async Task loginUser()
 	{
-		Console.WriteLine("Signed in!");
+		var user = await AuthenticationService.LoginAsync(UserData);
+
+		if (user != null)
+		{
+			await LocalStorage.SetItemAsync("AuthenticationToken", user.Token);
+
+			NavigationManager.NavigateTo("/");
+
+			ToastService.ShowSuccess("Logged in successfully!");
+		}
+		else
+		{
+			ToastService.ShowError("Invalid email or password");
+		}
 	}
-	// var user = await AuthenticationService.loginAsync(UserData);
-
-	// if (user != null)
-	// {
-	// await LocalStorage.SetItemAsync("AuthenticationToken", user.Token);
-
-	// NavigationManager.NavigateTo("/");
-
-	// ToastService.ShowSuccess("Account created successfully!");
-	// }
-	// else
-	// {
-	// ToastService.ShowError("Failed to create account!");
-	// }
-	// }
 }

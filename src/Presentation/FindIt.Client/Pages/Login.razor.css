@@ -6,14 +6,14 @@
 
 .login-card {
     justify-content: space-between;
-    gap: 9rem;
+    gap: 8rem;
     background-image: url('/images/signin_background.png');
     background-size: cover;
 
 }
 
 .main-container {
-    background-color: #ffffffc8;
+    background-color: #ffffff;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 

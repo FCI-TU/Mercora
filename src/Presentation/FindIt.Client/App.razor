@@ -1,22 +1,12 @@
 ﻿<Router AppAssembly="@typeof(App).Assembly">
 	<Found Context="routeData">
-		@if (routeData.PageType == typeof(Pages.Register))
-		{
-			<!-- Render the Register page without a layout -->
+		<LayoutView Layout="@typeof(MercoraLayout)">
 			<RouteView RouteData="@routeData" />
-		}
-		else
-		{
-			<!-- Render other pages with the specified layout -->
-			<LayoutView Layout="@typeof(MercoraLayout)">
-				<RouteView RouteData="@routeData" />
-				<FocusOnNavigate RouteData="@routeData" Selector="h1" />
-			</LayoutView>
-		}
+			<FocusOnNavigate RouteData="@routeData" Selector="h1" />
+		</LayoutView>
 	</Found>
 	<NotFound>
 		<PageTitle>Not found</PageTitle>
-		<!-- Render "Not Found" page with the layout -->
 		<LayoutView Layout="@typeof(MercoraLayout)">
 			<p role="alert">Sorry, there's nothing at this address.</p>
 		</LayoutView>
