@@ -16,6 +16,7 @@ app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapRazorPages();
