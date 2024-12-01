@@ -1,10 +1,11 @@
-﻿using System.Linq.Expressions;
+﻿using Microsoft.EntityFrameworkCore.Query;
+using System.Linq.Expressions;
 
 namespace FindIt.Persistence.Interfaces;
 public interface ISpecifications<T> where T : class
 {
     Expression<Func<T, bool>>? WhereCriteria { get; }
-    List<Expression<Func<T, object>>> IncludesCriteria { get; }
+    List<Func<IQueryable<T>, IIncludableQueryable<T, object>>> IncludesCriteria { get; set; }
     Expression<Func<T, object>>? OrderBy { get; }
     Expression<Func<T, object>>? OrderByDesc { get; }
     int Take { get; }

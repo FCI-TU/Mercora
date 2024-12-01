@@ -1,5 +1,6 @@
 ﻿using FindIt.Domain.Common;
 using FindIt.Persistence.Interfaces;
+using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
 namespace FindIt.Persistence.Specifications;
@@ -15,10 +16,10 @@ public class BaseSpecifications<T> : ISpecifications<T> where T : BaseEntity
     #region  Properties
     
     // Gets the criteria for filtering entities
-    public Expression<Func<T, bool>>? WhereCriteria { get; private set; }
+    public Expression<Func<T, bool>>? WhereCriteria { get; set; }
 
     // Gets the list of criteria for including related entities.
-    public List<Expression<Func<T, object>>> IncludesCriteria { get; private set; } = [];
+    public List<Func<IQueryable<T>, IIncludableQueryable<T, object>>> IncludesCriteria { get; set; } = new List<Func<IQueryable<T>, IIncludableQueryable<T, object>>>();
 
     // Gets the criteria for ordering entities in ascending order.
     public Expression<Func<T, object>>? OrderBy { get; private set; }
@@ -52,19 +53,6 @@ public class BaseSpecifications<T> : ISpecifications<T> where T : BaseEntity
     public void ApplyOrderByDescending(Expression<Func<T, object>> orderByDescExpression)
     {
         OrderByDesc = orderByDescExpression;
-    }
-
-    public void AddInclude(Expression<Func<T, object>> include)
-    {
-        IncludesCriteria.Add(include);
-    }
-
-    public void AddThenInclude<TPreviousProperty>(Expression<Func<TPreviousProperty, object>> thenInclude)
-    {
-        if (thenInclude is Expression<Func<T, object>> convertedThenInclude)
-            IncludesCriteria.Add(convertedThenInclude);
-        else
-            throw new InvalidOperationException("Invalid type conversion for ThenInclude");
     }
 
 
