@@ -1,6 +1,6 @@
 ﻿using FindIt.Domain.Common;
 
-namespace FindIt.Persistence.Interfaces;
+namespace FindIt.Domain.Interfaces;
 public interface IGenericRepository<T> where T : BaseEntity
 {
     Task<IReadOnlyList<T>> GetAllAsync(bool withNoTracking = true);

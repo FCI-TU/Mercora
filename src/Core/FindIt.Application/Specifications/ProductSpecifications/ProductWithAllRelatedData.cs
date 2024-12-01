@@ -1,7 +1,7 @@
 ﻿using FindIt.Domain.ProductEntities;
 using Microsoft.EntityFrameworkCore;
 
-namespace FindIt.Persistence.Specifications.ProductSpecifications
+namespace FindIt.Domain.Specifications.ProductSpecifications
 {
     public class ProductWithAllRelatedData : BaseSpecifications<Product>
     {

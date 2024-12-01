@@ -1,9 +1,9 @@
 ﻿using FindIt.Domain.Common;
-using FindIt.Persistence.Interfaces;
+using FindIt.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
-namespace FindIt.Persistence.Specifications;
+namespace FindIt.Domain.Specifications;
 
 /// <summary>
 /// Represents the base class for specifications that can be applied to a queryable collection of entities.

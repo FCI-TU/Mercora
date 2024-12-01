@@ -1,6 +1,6 @@
 ﻿using FindIt.Domain.Common;
+using FindIt.Domain.Interfaces;
 using FindIt.Persistence.Context;
-using FindIt.Persistence.Interfaces;
 using System.Collections.Concurrent;
 
 namespace FindIt.Persistence.Repositories.Classes;
