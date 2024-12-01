@@ -9,6 +9,9 @@ namespace FindIt.Persistence.Specifications.ProductSpecifications
         {
             IncludesCriteria.Add(q=>q.Include(p=>p.Category));
             IncludesCriteria.Add(q => q.Include(p => p.Brand));
+            IncludesCriteria.Add(q => q.Include(p => p.Color));
+            IncludesCriteria.Add(q => q.Include(p => p.ProductSizes).ThenInclude(ps => ps.Size));
+
 
             AddWhere(p => 
                     (string.IsNullOrEmpty(productSpecifications.Search) ||
@@ -55,7 +58,8 @@ namespace FindIt.Persistence.Specifications.ProductSpecifications
         {
             IncludesCriteria.Add(q => q.Include(p => p.Category));
             IncludesCriteria.Add(q => q.Include(p => p.Brand));
-
+            IncludesCriteria.Add(q => q.Include(p => p.Color));
+            IncludesCriteria.Add(q=>q.Include(p=>p.ProductSizes).ThenInclude(ps=>ps.Size));
 
 
         }
