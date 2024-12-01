@@ -30,4 +30,9 @@ public class ProductRequest
 
     [Required(ErrorMessage = "Category ID is required")]
     public int CategoryId { get; set; }
+
+	[Required(ErrorMessage ="Product Sizes is required")]
+	public List<int> ProductSizes { get; set; } = new List<int>();
+	[Required(ErrorMessage ="Color ID is required")]
+	public int ColorId { get; set; }
 }
