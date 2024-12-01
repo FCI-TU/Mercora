@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Query;
 using System.Linq.Expressions;
 
-namespace FindIt.Persistence.Interfaces;
+namespace FindIt.Domain.Interfaces;
 public interface ISpecifications<T> where T : class
 {
     Expression<Func<T, bool>>? WhereCriteria { get; }

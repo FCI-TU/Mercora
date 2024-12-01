@@ -1,4 +1,4 @@
-﻿namespace FindIt.Persistence.Specifications.ProductSpecifications
+﻿namespace FindIt.Domain.Specifications.ProductSpecifications
 {
     public class ProductSpecifications
     {

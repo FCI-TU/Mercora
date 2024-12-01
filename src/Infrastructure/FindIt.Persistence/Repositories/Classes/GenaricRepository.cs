@@ -1,7 +1,7 @@
 ﻿using FindIt.Domain.Common;
+using FindIt.Domain.Interfaces;
+using FindIt.Domain.Specifications;
 using FindIt.Persistence.Context;
-using FindIt.Persistence.Interfaces;
-using FindIt.Persistence.Specifications;
 using Microsoft.EntityFrameworkCore;
 
 namespace FindIt.Persistence.Repositories.Classes;

@@ -1,8 +1,7 @@
 ﻿using FindIt.Domain.Common;
-using FindIt.Persistence.Interfaces;
-using Microsoft.EntityFrameworkCore;
+using FindIt.Domain.Interfaces;
 
-namespace FindIt.Persistence.Specifications;
+namespace FindIt.Domain.Specifications;
 
 /// <summary>
 /// A static class that evaluates specifications against a queryable collection of entities.
