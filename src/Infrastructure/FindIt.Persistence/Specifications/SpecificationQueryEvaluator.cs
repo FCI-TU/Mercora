@@ -24,15 +24,22 @@ public static class SpecificationQueryEvaluator<T> where T : BaseEntity
         if (specifications.WhereCriteria is not null)
             query = query.Where(specifications.WhereCriteria);
 
+        // Include specified navigation properties
+        if (specifications.IncludesCriteria is not null && specifications.IncludesCriteria.Any())
+        {
+            foreach (var include in specifications.IncludesCriteria)
+            {
+                query = include(query);
+            }
+        }
+
         // Apply ordering criteria
         if (specifications.OrderBy is not null)
             query = query.OrderBy(specifications.OrderBy);
         else if (specifications.OrderByDesc is not null)
             query = query.OrderBy(specifications.OrderByDesc);
 
-        // Include specified navigation properties
-        query = specifications.IncludesCriteria.Aggregate(query, (current, include) => current.Include(include));
-
+      
         // Apply pagination if enabled
         if (specifications.IsPaginationEnabled)
             query = query.Skip(specifications.Skip).Take(specifications.Take);

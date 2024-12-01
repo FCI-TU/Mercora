@@ -28,4 +28,10 @@ public class Product : BaseEntity
 
     //[InverseProperty(nameof(ProductBrand.Products))] We use this data annotation to link with navigation property in product class (but we use it if exist many navigation properties)
     public Category Category { get; set; } = null!; // Navigational Property
+
+    public int ColorId { get; set; }
+    public Color Color { get; set; } = null!;
+
+    public virtual ICollection<ProductSize> ProductSizes { get; set; } = null!;
+
 }
