@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace FindIt.Shared.DTOs;
 public class ProductRequest
@@ -11,9 +12,8 @@ public class ProductRequest
 	[StringLength(500, ErrorMessage = "Description cannot exceed 500 characters")]
 	public string Description { get; set; } = null!;
 
-	[Required(ErrorMessage = "Image Cover is required")]
-	[StringLength(500, ErrorMessage = "Image Cover cannot exceed 500 characters")]
-	public string ImageCover { get; set; } = null!;
+	[Required(ErrorMessage ="Image file is required")]
+	public IFormFile Image { get; set; } = null!;
 
 	[Required(ErrorMessage = "Quantity is required")]
 	public decimal Quantity { get; set; }

@@ -5,7 +5,7 @@ using FindIt.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 
 namespace FindIt.Persistence.Repositories.Classes;
-public class GenericRepository<T>(StoreDbContext dbContext) : IGenericRepository<T> where T : BaseEntity
+public class GenericRepository<T>(StoreDbContext dbContext) : IGenericRepository<T> where T : class
 {
     public async Task<IReadOnlyList<T>> GetAllAsync(bool withNoTracking = true)
     {
@@ -48,5 +48,10 @@ public class GenericRepository<T>(StoreDbContext dbContext) : IGenericRepository
     private IQueryable<T> ApplySpecification(ISpecifications<T> specification)
     {
         return SpecificationQueryEvaluator<T>.GetQuery(dbContext.Set<T>(), specification);
+    }
+
+    public async Task AddRangeAsync(IEnumerable<T> entities)
+    {
+        await dbContext.Set<T>().AddRangeAsync(entities);
     }
 }

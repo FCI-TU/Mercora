@@ -1,4 +1,6 @@
-﻿namespace FindIt.Domain.ProductEntities
+﻿using FindIt.Domain.Common;
+
+namespace FindIt.Domain.ProductEntities
 {
     public class ProductSize
     {

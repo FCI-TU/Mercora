@@ -10,7 +10,7 @@ namespace FindIt.Server.Controllers.V1
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiVersion("1.0")]
     [ApiController]
-    public class AuthController(IAuthService authService) : ApiBaseController
+    public class AuthController(IAuthService authService) : ControllerBase
     {
         [HttpPost("register")]
         public async Task<ActionResult<AppUserResponse>> Register(RegisterRequest model)

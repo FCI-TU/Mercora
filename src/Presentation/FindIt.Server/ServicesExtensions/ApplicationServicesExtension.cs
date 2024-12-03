@@ -12,10 +12,13 @@ namespace FindIt.Server.ServicesExtensions
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             
             services.AddScoped<IAuthService, AuthService>();
-           
+
             services.AddAutoMapper(typeof(BrandProfileMapExtension));
            
             services.AddScoped<IBrandService, BrandService>();
+
+            services.AddScoped<IProductService, ProductService>();
+
             return services;
         }
     }
