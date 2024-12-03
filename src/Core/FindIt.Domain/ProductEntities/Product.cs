@@ -16,22 +16,18 @@ public class Product : BaseEntity
     public decimal RatingsAverage { get; set; }
 
     public bool Featured { get; set; }
+    
+    public int BrandId { get; set; }
 
-    //[ForeignKey(nameof(Product.Brand))]  // With this data annotation we can solve problem (But We Don't Name ProductBrandId So EF Don't Know This FK) but we solve it with Fluent API
-    public int BrandId { get; set; } // FK - ProductBrand - But We Don't Name ProductBrandId So EF Don't Know This FK So We Make It In Fluent API
+    public Brand Brand { get; set; } = null!;
 
-    //[InverseProperty(nameof(ProductBrand.Products))] We use this data annotation to link with navigation property in product class (but we use it if exist many navigation properties)
-    public Brand Brand { get; set; } = null!; // Navigational Property
+    public int CategoryId { get; set; }
 
-    //[ForeignKey(nameof(Product.Category))]  // With this data annotation we can solve problem (But We Don't Name ProductCategoryId So EF Don't Know This FK) but we solve it with Fluent API
-    public int CategoryId { get; set; } // FK - ProductCategory - But We Don't Name ProductCategoryId So EF Don't Know This FK So We Make It In Fluent API
-
-    //[InverseProperty(nameof(ProductBrand.Products))] We use this data annotation to link with navigation property in product class (but we use it if exist many navigation properties)
-    public Category Category { get; set; } = null!; // Navigational Property
+    public Category Category { get; set; } = null!;
 
     public int ColorId { get; set; }
+    
     public Color Color { get; set; } = null!;
 
     public virtual ICollection<ProductSize> ProductSizes { get; set; } = null!;
-
 }
