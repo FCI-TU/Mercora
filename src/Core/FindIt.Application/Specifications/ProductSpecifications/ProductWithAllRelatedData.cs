@@ -12,7 +12,6 @@ namespace FindIt.Domain.Specifications.ProductSpecifications
             IncludesCriteria.Add(q => q.Include(p => p.Color));
             IncludesCriteria.Add(q => q.Include(p => p.ProductSizes).ThenInclude(ps => ps.Size));
 
-
             AddWhere(p => 
                     (string.IsNullOrEmpty(productSpecifications.Search) ||
                      p.Name.ToLower().Contains(productSpecifications.Search.ToLower())) &&

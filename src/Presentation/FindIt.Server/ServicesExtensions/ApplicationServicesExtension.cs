@@ -11,7 +11,7 @@ namespace FindIt.Server.ServicesExtensions
         {
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddScoped<IAuthService, AuthService>();
-
+            services.AddScoped<IProductService, ProductService>();
             return services;
         }
     }
