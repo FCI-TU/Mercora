@@ -1,5 +1,4 @@
 ﻿using FindIt.Domain.Common;
-
 namespace FindIt.Domain.ProductEntities;
 public class Brand : BaseEntity
 {
