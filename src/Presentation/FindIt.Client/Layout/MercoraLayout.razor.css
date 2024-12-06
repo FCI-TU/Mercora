@@ -8,6 +8,10 @@ main {
     flex: 1;
 }
 
+.nav-container {
+    background-color: #38B593;
+}
+
 .nav-menu {
     background-image: linear-gradient(180deg, rgb(44, 62, 80) 0%, rgb(52, 73, 94) 70%);
 }
