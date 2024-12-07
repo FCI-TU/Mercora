@@ -1,8 +1,11 @@
-﻿using FindIt.Domain.IdentityEntities;
+﻿using FindIt.Domain.CartEntities;
+using FindIt.Domain.IdentityEntities;
 using FindIt.Domain.ProductEntities;
 using FindIt.Persistence.Context.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Reflection.Emit;
 
 namespace FindIt.Persistence.Context;
 public class StoreDbContext(DbContextOptions<StoreDbContext> options) : IdentityDbContext<AppUser>(options)
@@ -19,4 +22,6 @@ public class StoreDbContext(DbContextOptions<StoreDbContext> options) : Identity
     public DbSet<Product> Products { get; set; }
     public DbSet<Brand> Brands { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Cart> Carts { get; set; }
+
 }
