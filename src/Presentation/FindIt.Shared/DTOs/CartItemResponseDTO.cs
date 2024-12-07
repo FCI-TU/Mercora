@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FindIt.Shared.DTOs
 {
+
     public class CartItemResponseDTO
     {
         [Required(ErrorMessage = "ProductId is required.")]

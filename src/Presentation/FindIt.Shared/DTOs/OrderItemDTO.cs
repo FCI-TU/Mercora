@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace FindIt.Shared.DTOs
-{
+{  
     public class OrderItemDTO
     {
         [Required(ErrorMessage = "ProductId is required.")]

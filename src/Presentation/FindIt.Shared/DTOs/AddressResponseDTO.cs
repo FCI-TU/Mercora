@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FindIt.Shared.DTOs
 {
+
     public class AddressResponseDTO
     {
         [Required(ErrorMessage = "FullName is required.")]
