@@ -1,4 +1,5 @@
-﻿using FindIt.Domain.IdentityEntities;
+﻿using FindIt.Domain;
+using FindIt.Domain.IdentityEntities;
 using FindIt.Domain.ProductEntities;
 using FindIt.Persistence.Context.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -19,4 +20,5 @@ public class StoreDbContext(DbContextOptions<StoreDbContext> options) : Identity
     public DbSet<Product> Products { get; set; }
     public DbSet<Brand> Brands { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<Order> orders { get; set; }
 }
