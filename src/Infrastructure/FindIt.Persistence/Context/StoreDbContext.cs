@@ -1,4 +1,5 @@
 ﻿using FindIt.Domain;
+﻿using FindIt.Domain.CartEntities;
 using FindIt.Domain.IdentityEntities;
 using FindIt.Domain.ProductEntities;
 using FindIt.Persistence.Context.Configurations;
@@ -21,4 +22,6 @@ public class StoreDbContext(DbContextOptions<StoreDbContext> options) : Identity
     public DbSet<Brand> Brands { get; set; }
     public DbSet<Category> Categories { get; set; }
     public DbSet<Order> orders { get; set; }
+    public DbSet<Cart> Carts { get; set; }
+
 }
