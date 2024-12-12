@@ -1,0 +1,12 @@
+﻿.media-img {
+    transition: transform 0.5s;
+}
+
+.media-img:hover {
+    transform: scale(0.98);
+}
+
+.page-selection {
+    margin-right: 15px;
+    margin-bottom: 30px;
+}
