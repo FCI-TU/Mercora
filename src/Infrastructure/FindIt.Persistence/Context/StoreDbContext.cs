@@ -1,6 +1,6 @@
-﻿using FindIt.Domain;
 ﻿using FindIt.Domain.CartEntities;
 using FindIt.Domain.IdentityEntities;
+using FindIt.Domain.OrderEntities;
 using FindIt.Domain.ProductEntities;
 using FindIt.Persistence.Context.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
