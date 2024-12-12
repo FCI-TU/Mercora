@@ -2,7 +2,7 @@
 using FindIt.Shared.Checkout;
 using FindIt.Shared.DTOs;
 
-namespace BlazorEcommerce.Client.Services.CartService;
+namespace FindIt.Client.Services.CartService;
 public interface ICartService
 {
 	public event Action OnChange;

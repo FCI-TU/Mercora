@@ -1,7 +1,7 @@
 ﻿using FindIt.Application.Interfaces;
 using FindIt.Application.Services;
 using FindIt.Domain.Interfaces;
-using FindIt.Persistence.Repositories.Classes;
+using FindIt.Persistence.Repositories;
 
 namespace FindIt.Server.ServicesExtensions
 {

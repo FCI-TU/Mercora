@@ -4,7 +4,7 @@ using FindIt.Domain.Specifications;
 using FindIt.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace FindIt.Persistence.Repositories.Classes;
+namespace FindIt.Persistence.Repositories;
 public class GenericRepository<T>(StoreDbContext dbContext) : IGenericRepository<T> where T : class
 {
     public async Task<IReadOnlyList<T>> GetAllAsync(bool withNoTracking = true)

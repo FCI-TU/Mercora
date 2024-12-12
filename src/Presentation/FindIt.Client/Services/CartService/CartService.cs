@@ -4,7 +4,7 @@ using FindIt.Shared.Cart;
 using FindIt.Shared.Checkout;
 using FindIt.Shared.DTOs;
 
-namespace BlazorEcommerce.Client.Services.CartService;
+namespace FindIt.Client.Services.CartService;
 public class CartService(IHttpClientFactory _httpClientFactory, ILocalStorageService localStorageService) : ICartService
 {
 	private readonly HttpClient httpClient = _httpClientFactory.CreateClient("Auth");
@@ -19,6 +19,8 @@ public class CartService(IHttpClientFactory _httpClientFactory, ILocalStorageSer
 
 	public async Task InitializeCart()
 	{
+		Console.WriteLine("Entered Serv");
+
 		var cartId = await localStorageService.GetItemAsync<string>("cartId");
 
 		if (string.IsNullOrWhiteSpace(cartId))

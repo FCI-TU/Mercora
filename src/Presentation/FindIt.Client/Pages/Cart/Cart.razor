@@ -1,6 +1,8 @@
 ﻿@page "/cart"
-@using BlazorEcommerce.Client.Services.CartService
+@using FindIt.Client.Services.CartService
 @using FindIt.Shared.Cart
+@using FindIt.Client.Shared.Checkout
+@using FindIt.Client.Shared.Cart
 @inject ICartService CartService
 
 @if (CartResponse is null || CartResponse.Items.Count == 0)
@@ -23,18 +25,18 @@ else
 				<div class="row mt-3 mb-3">
 					<div class="col-6 offset-6">
 						<OrderTotals></OrderTotals>
-						<AuthorizeView>
-							<Authorized>
+						@* <AuthorizeView>
+							<Authorized> *@
 								<div class="d-grid mt-3">
 									<a href="checkout" class="btn btn-info">Proceed to checkout</a>
 								</div>
-							</Authorized>
+							@* </Authorized>
 							<NotAuthorized>
 								<div class="d-grid mt-3">
 									<a href="login" class="btn btn-info">Proceed to checkout</a>
 								</div>
 							</NotAuthorized>
-						</AuthorizeView>
+						</AuthorizeView> *@
 					</div>
 				</div>
 			</div>
@@ -48,6 +50,8 @@ else
 
 	protected override void OnInitialized()
 	{
+		Console.WriteLine("Entered");
+
 		CartResponse = CartService.Cart;
 
 		CartService.OnChange += OnCartChanged; // for real-time updates - if made page refresh
