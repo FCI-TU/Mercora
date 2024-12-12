@@ -1,4 +1,4 @@
-﻿using FindIt.Domain;
+﻿using FindIt.Domain.OrderEntities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,8 +9,6 @@ namespace FindIt.Persistence.Context.Configurations
     {
         public void Configure(EntityTypeBuilder<Order> builder)
         {
-            builder.HasKey(o => o.Id);
-
             builder.OwnsOne(Order => Order.ShippingAddress, ShippingAddress =>
             {
                 ShippingAddress.Property(sa => sa.FirstName)
@@ -41,22 +39,8 @@ namespace FindIt.Persistence.Context.Configurations
             builder.Property(o=>o.OrderDate)
                 .HasMaxLength(50);
 
-            builder.Property(o=>o.Status)
-                .IsRequired()
-                .HasMaxLength(50);
-
             builder.Property(o => o.SubTotal)
-                .IsRequired()
-                .HasMaxLength(50)
-                .HasColumnType("decimal(18,2)");
-
-          /*  builder.HasOne(o => o.OrderDeliveryMethod)
-               .WithMany(odm => odm.Order)
-               .HasForeignKey(o => o.OrderDeliveryMethodId)
-               .OnDelete(DeleteBehavior.Cascade);
-          */
-
-            
+                .HasColumnType("decimal(9,2)");
         }
     }
 }
