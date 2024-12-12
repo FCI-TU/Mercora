@@ -27,4 +27,9 @@ public class Order : BaseEntity
 	public decimal SubTotal { get; set; } // all salaries of items
 
 	public string PaymentIntentId { get; set; } = null!;
+    public OrderDeliveryMethod DeliveryMethod { get; set; } = null!;
+
+    public ICollection<OrderItem> Items { get; set; } = new HashSet<OrderItem>();
+
+    public decimal GetTotal() => SubTotal + DeliveryMethod.Cost;
 }
