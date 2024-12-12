@@ -1,18 +1,14 @@
-﻿
-
-using FindIt.Application.DTOs;
+﻿using FindIt.Application.DTOs;
 using FindIt.Application.ErrorHandling;
 using FindIt.Domain.Specifications.ProductSpecifications;
 using FindIt.Shared.DTOs;
 
-namespace FindIt.Application.Interfaces
+namespace FindIt.Application.Interfaces;
+public interface IProductService
 {
-    public interface IProductService
-    {
-        Task<Result<Pagination<ProductResponse>>> GetAllProductsAsync(ProductSpecifications productSpecifications);
-        Task<Result<ProductResponse>> GetProductAsync(int productId);
-        Task<Result<ProductResponse>> CreateProductAsync(ProductRequest productRequest);
-        Task<Result<ProductResponse>> UpdateProductAsync(int productId, ProductRequest productRequest);
-        Task<Result<string>> DeleteProductAsync(int productId);
-    }
+    Task<Result<Pagination<ProductResponse>>> GetAllProductsAsync(ProductSpecifications productSpecifications);
+    Task<Result<ProductResponse>> GetProductAsync(int productId);
+    Task<Result<ProductResponse>> CreateProductAsync(ProductRequest productRequest);
+    Task<Result<ProductResponse>> UpdateProductAsync(int productId, ProductRequest productRequest);
+    Task<Result<string>> DeleteProductAsync(int productId);
 }

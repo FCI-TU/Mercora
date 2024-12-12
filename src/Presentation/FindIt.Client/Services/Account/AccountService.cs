@@ -1,10 +1,8 @@
-﻿using Blazored.LocalStorage;
-using FindIt.Shared.Checkout;
-using Microsoft.AspNetCore.Components;
+﻿using FindIt.Shared.Checkout;
 using System.Net.Http.Json;
 
-namespace BlazorEcommerce.Client.Services.Account;
-public class AccountService(IHttpClientFactory _httpClientFactory, ILocalStorageService LocalStorage, NavigationManager navigationManager) : IAccountService
+namespace FindIt.Client.Services.Account;
+public class AccountService(IHttpClientFactory _httpClientFactory) : IAccountService
 {
 	private readonly HttpClient httpClient = _httpClientFactory.CreateClient("Auth");
 

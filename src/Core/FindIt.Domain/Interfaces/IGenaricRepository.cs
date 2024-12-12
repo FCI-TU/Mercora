@@ -1,6 +1,4 @@
-﻿using FindIt.Domain.Common;
-
-namespace FindIt.Domain.Interfaces;
+﻿namespace FindIt.Domain.Interfaces;
 public interface IGenericRepository<T> where T : class
 {
     Task<IReadOnlyList<T>> GetAllAsync(bool withNoTracking = true);

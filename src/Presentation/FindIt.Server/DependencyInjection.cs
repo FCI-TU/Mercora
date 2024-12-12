@@ -2,6 +2,7 @@
 using FindIt.Application.Settings;
 using FindIt.Persistence;
 using FindIt.Persistence.Settings;
+using FindIt.Server.ServicesExtension;
 using FindIt.Server.ServicesExtensions;
 using Microsoft.Extensions.Options;
 
@@ -31,8 +32,9 @@ namespace FindIt.Server
 
             services.AddStoreContext(databaseConnections.FindItDb);
 
+            services.AddRedis(databaseConnections.RedisConnection);
 
-            services.AddIdentityConfigurations();
+			services.AddIdentityConfigurations();
 
             services.AddAuthenticationService(jwtData);
 
