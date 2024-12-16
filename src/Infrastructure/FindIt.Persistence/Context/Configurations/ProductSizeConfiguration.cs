@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace FindIt.Persistence.Context.Configurations;
-public class AppUserConfigurations : IEntityTypeConfiguration<AppUser>
+internal class ProductSizeConfiguration : IEntityTypeConfiguration<ProductSize>
 {
     public void Configure(EntityTypeBuilder<AppUser> builder)
     {

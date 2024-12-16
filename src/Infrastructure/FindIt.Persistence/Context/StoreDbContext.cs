@@ -1,4 +1,4 @@
-﻿using FindIt.Domain.CartEntities;
+using FindIt.Domain.CartEntities;
 using FindIt.Domain.IdentityEntities;
 using FindIt.Domain.OrderEntities;
 using FindIt.Domain.ProductEntities;
@@ -18,6 +18,7 @@ public class StoreDbContext(DbContextOptions<StoreDbContext> options) : Identity
     public DbSet<IdentityCode> IdentityCodes { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     public DbSet<UserAddress> UserAddresses { get; set; }
+    public DbSet<CartItem> CartItems { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Brand> Brands { get; set; }
     public DbSet<Category> Categories { get; set; }
