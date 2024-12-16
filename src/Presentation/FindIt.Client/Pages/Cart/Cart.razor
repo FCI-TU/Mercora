@@ -1,0 +1,80 @@
+﻿@page "/cart"
+@using FindIt.Client.Services.CartService
+@using FindIt.Shared.Cart
+@using FindIt.Client.Shared.Checkout
+@using FindIt.Client.Shared.Cart
+@inject ICartService CartService
+
+@if (CartResponse is null || CartResponse.Items.Count == 0)
+{
+	<div class="empty-cart d-flex flex-column justify-content-center align-items-center rounded-1 text-center py-5 shadow-sm">
+		<img src="images/empty-cart.png" alt="Empty Cart" class="empty-cart-img mb-4 h-auto w-100">
+		<h2 class="mb-3 fw-bolder">Your Cart is Empty!</h2>
+		<p class="text-muted mb-4">Looks like you haven't added anything to your cart yet.</p>
+		<a href="products" class="btn btn-primary rounded-4 btn-lg px-4 py-2">Browse</a>
+	</div>
+}
+else
+{
+	<section class="container mt-2">
+		<div>
+			<div class="container">
+				<div class="row">
+					<CartSummary IncreaseItem="AddItem" DecreaseItem="RemoveItem"></CartSummary>
+				</div>
+				<div class="row mt-3 mb-3">
+					<div class="col-6 offset-6">
+						<OrderTotals></OrderTotals>
+						@* <AuthorizeView>
+							<Authorized> *@
+								<div class="d-grid mt-3">
+									<a href="checkout" class="btn btn-info">Proceed to checkout</a>
+								</div>
+							@* </Authorized>
+							<NotAuthorized>
+								<div class="d-grid mt-3">
+									<a href="login" class="btn btn-info">Proceed to checkout</a>
+								</div>
+							</NotAuthorized>
+						</AuthorizeView> *@
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+
+@code {
+
+	private CartResponse? CartResponse { get; set; }
+
+	protected override void OnInitialized()
+	{
+		Console.WriteLine("Entered");
+
+		CartResponse = CartService.Cart;
+
+		CartService.OnChange += OnCartChanged; // for real-time updates - if made page refresh
+
+	}
+
+	private void OnCartChanged()
+	{
+		CartResponse = CartService.Cart;
+
+		StateHasChanged();
+	}
+
+	public void AddItem((CartItemResponse cartItem, decimal quantity) pair)
+	{
+		CartService.IncreaseItemCountInCart(pair.cartItem, pair.quantity);
+		CartResponse = CartService.Cart;
+	}
+
+	public void RemoveItem((int id, decimal quantity) pair)
+	{
+		CartService.RemoveItemFromCart(pair.id, pair.quantity);
+		CartResponse = CartService.Cart;
+	}
+
+}
