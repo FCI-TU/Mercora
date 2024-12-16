@@ -49,6 +49,7 @@ namespace FindIt.Server.Controllers.V1
         {
             var result = await categoryService.SearchAsync(query);
             return result.IsSuccess ? result.ToSuccess(result.Value) : result.ToProblem();
+
         }
     }
 }
