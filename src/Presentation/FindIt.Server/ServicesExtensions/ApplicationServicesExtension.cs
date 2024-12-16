@@ -1,6 +1,7 @@
 ﻿using FindIt.Application.Interfaces;
 using FindIt.Application.Services;
 using FindIt.Domain.Interfaces;
+using FindIt.Domain.ProductEntities;
 using FindIt.Persistence.Repositories;
 
 namespace FindIt.Server.ServicesExtensions
@@ -12,10 +13,19 @@ namespace FindIt.Server.ServicesExtensions
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             
             services.AddScoped<IAuthService, AuthService>();
+           
+            #region Brand
 
             services.AddAutoMapper(typeof(BrandProfileMapExtension));
-           
+
             services.AddScoped<IBrandService, BrandService>();
+
+            #endregion
+
+            #region Category
+            services.AddScoped<ICategoryService, CategoryService>();
+            services.AddAutoMapper(typeof(CategoryProfileMapExtension)); 
+            #endregion
 
             services.AddScoped<IProductService, ProductService>();
 
