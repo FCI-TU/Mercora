@@ -8,7 +8,7 @@ main {
     flex: 1;
 }
 
-.nav-container {
+.nav-container 
     background-color: #38B593;
 }
 
@@ -24,6 +24,7 @@ main {
     display: flex;
     align-items: center;
 }
+
 
 .top-row ::deep a, .top-row ::deep .btn-link {
     white-space: nowrap;
