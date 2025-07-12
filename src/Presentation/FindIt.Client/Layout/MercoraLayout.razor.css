@@ -8,8 +8,8 @@ main {
     flex: 1;
 }
 
-.nav-container {
-    background-color: rgba(1,169,96,1);
+.nav-container 
+    background-color: #38B593;
 }
 
 .nav-menu {

@@ -1,4 +1,7 @@
-﻿using FindIt.Domain.IdentityEntities;
+﻿using FindIt.Domain.CartEntities;
+using FindIt.Domain.IdentityEntities;
+using FindIt.Domain.OrderEntities;
+using FindIt.Domain.ProductEntities;
 using FindIt.Persistence.Context.Configurations;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -15,4 +18,10 @@ public class StoreDbContext(DbContextOptions<StoreDbContext> options) : Identity
     public DbSet<IdentityCode> IdentityCodes { get; set; }
     public DbSet<RefreshToken> RefreshTokens { get; set; }
     public DbSet<UserAddress> UserAddresses { get; set; }
+    public DbSet<Product> Products { get; set; }
+    public DbSet<Brand> Brands { get; set; }
+    public DbSet<Category> Categories { get; set; }
+    public DbSet<Order> orders { get; set; }
+    public DbSet<Cart> Carts { get; set; }
+
 }
